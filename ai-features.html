@@ -375,43 +375,92 @@
         </ul>
       </div>
 
-      <!-- Widget 1 Simulation (Placed right on desktop for alternating layout) -->
-      <div class="widget-box reveal">
-        <div class="widget-header">
+      <!-- Widget 1 Simulation (Clinical Triage Dashboard) -->
+      <div class="widget-box reveal" style="min-height: 350px;">
+        <div class="widget-header" style="margin-bottom: 12px;">
           <span>CLINICAL TRIAGE DASHBOARD</span>
           <span class="widget-indicator" style="background: rgba(229, 87, 103, 0.12); color: #ff6b7a; display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(229, 87, 103, 0.2);">
             <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: #ff6b7a;"></span>
             Active Triage Alerts
           </span>
         </div>
-        <div class="triage-dashboard-view" style="padding: 16px; font-family: var(--data); font-size: 0.82rem; text-align: left;">
-          <p style="font-weight: 700; color: var(--navy); margin-bottom: 12px; font-size: 0.85rem;">Clinical Adherence Flags:</p>
+        <div class="triage-dashboard-view" style="font-family: var(--data); font-size: 0.82rem; text-align: left; display: flex; flex-direction: column; gap: 12px;">
           
-          <div style="background: rgba(229, 87, 103, 0.05); border: 1px solid rgba(229, 87, 103, 0.15); border-radius: 8px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
-            <div>
-              <strong style="color: var(--navy);">Sarah Connor (Patient)</strong>
-              <div style="font-size: 0.72rem; color: var(--text-dim-dark); margin-top: 2px;">Missed morning dose: Gonal-F (225 IU)</div>
+          <!-- Clinic Stats Row -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <div style="background: var(--navy-light); border: 1px solid var(--line-dark); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-dim-dark); text-transform: uppercase;">Adherence Rate</span>
+              <div style="display: flex; align-items: baseline; gap: 4px; margin-top: 2px;">
+                <strong style="font-size: 1.1rem; color: var(--navy-deep);">96.4%</strong>
+                <span style="font-size: 0.65rem; color: var(--success); font-weight: 700;">+1.2%</span>
+              </div>
             </div>
-            <span style="background: #ff6b7a; color: #fff; padding: 3px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; white-space: nowrap;">Urgent Call</span>
+            <div style="background: var(--navy-light); border: 1px solid var(--line-dark); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-dim-dark); text-transform: uppercase;">Risk Forecast</span>
+              <div style="display: flex; align-items: baseline; gap: 4px; margin-top: 2px;">
+                <strong style="font-size: 1.1rem; color: var(--warning);">Medium</strong>
+                <span style="font-size: 0.65rem; color: var(--warning); font-weight: 700;">2 Alerts</span>
+              </div>
+            </div>
           </div>
 
-          <div style="background: rgba(226, 160, 63, 0.05); border: 1px solid rgba(226, 160, 63, 0.15); border-radius: 8px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
-            <div>
-              <strong style="color: var(--navy);">Emma Watson (Patient)</strong>
-              <div style="font-size: 0.72rem; color: var(--text-dim-dark); margin-top: 2px;">CalmSeed Signal: High Stress (Dropout Risk)</div>
+          <!-- Trend Chart SVG -->
+          <div style="background: var(--white); border: 1px solid var(--line-dark); border-radius: 8px; padding: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-dim-dark); letter-spacing: 0.05em; text-transform: uppercase;">Clinic Compliance Trend</span>
+              <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-dim-dark);">7-Day Average</span>
             </div>
-            <span style="background: #e2a03f; color: #fff; padding: 3px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; white-space: nowrap;">Send CalmCue</span>
+            <div style="height: 50px; position: relative;">
+              <svg viewBox="0 0 100 25" style="width: 100%; height: 100%; overflow: visible;">
+                <defs>
+                  <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--navy)" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="var(--navy)" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="5" x2="100" y2="5" stroke="var(--line-dark)" stroke-width="0.5" stroke-dasharray="2,2" />
+                <line x1="0" y1="15" x2="100" y2="15" stroke="var(--line-dark)" stroke-width="0.5" stroke-dasharray="2,2" />
+                
+                <!-- Area path -->
+                <path d="M 0 25 L 0 18 C 15 15, 25 22, 40 12 C 55 2, 70 8, 85 5 L 100 8 L 100 25 Z" fill="url(#chart-grad)" />
+                
+                <!-- Line path -->
+                <path d="M 0 18 C 15 15, 25 22, 40 12 C 55 2, 70 8, 85 5 L 100 8" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" />
+                
+                <!-- Active Point -->
+                <circle cx="85" cy="5" r="3" fill="var(--navy-deep)" />
+                <circle cx="85" cy="5" r="5" fill="var(--navy-deep)" opacity="0.3" style="animation: pulse 2s infinite;" />
+              </svg>
+              <!-- Sparkline hover tooltip simulation -->
+              <div style="position: absolute; left: 85%; top: -8px; transform: translateX(-50%); background: var(--navy-deep); color: var(--white); font-size: 0.58rem; padding: 2px 4px; border-radius: 4px; pointer-events: none; font-weight: bold; white-space: nowrap; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                96.4% Compliance
+              </div>
+            </div>
           </div>
 
-          <div style="background: rgba(158, 140, 239, 0.05); border: 1px solid rgba(158, 140, 239, 0.15); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
-            <div>
-              <strong style="color: var(--navy);">Lily Evans (Patient)</strong>
-              <div style="font-size: 0.72rem; color: var(--text-dim-dark); margin-top: 2px;">All timeline tasks verified compliant (100% adherence)</div>
+          <!-- Alert Queue -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-dim-dark); letter-spacing: 0.05em; text-transform: uppercase;">Urgent Triage Queue</span>
+            
+            <div style="background: rgba(229, 87, 103, 0.04); border: 1px solid rgba(229, 87, 103, 0.12); border-radius: 6px; padding: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+              <div>
+                <strong style="color: var(--navy); font-size: 0.76rem;">Sarah Connor</strong>
+                <div style="font-size: 0.68rem; color: var(--text-dim-dark); margin-top: 1px;">Missed Morning Dose (Gonal-F)</div>
+              </div>
+              <span style="background: #ff6b7a; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;">Call Patient</span>
             </div>
-            <span style="background: var(--lavender); color: #fff; padding: 3px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; white-space: nowrap;">Monitored</span>
+
+            <div style="background: rgba(226, 160, 63, 0.04); border: 1px solid rgba(226, 160, 63, 0.12); border-radius: 6px; padding: 8px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+              <div>
+                <strong style="color: var(--navy); font-size: 0.76rem;">Emma Watson</strong>
+                <div style="font-size: 0.68rem; color: var(--text-dim-dark); margin-top: 1px;">CalmSeed: Dropout Risk Alert</div>
+              </div>
+              <span style="background: #e2a03f; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;">Send CalmCue</span>
+            </div>
           </div>
         </div>
-        <p style="font-size: 0.72rem; color: var(--text-dim-dark); text-align: center; margin-top: 8px; padding: 0 10px;">Predictive clinical triage interface for direct nurse intervention.</p>
+        <p style="font-size: 0.7rem; color: var(--text-dim-dark); text-align: center; margin-top: 8px;">Live clinical telemetry forecasting and predictive patient dropout prevention.</p>
       </div>
     </div>
   </section>
