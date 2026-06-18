@@ -161,6 +161,118 @@
       color: var(--text-dark);
     }
 
+    /* Nurse Time Drain Visualizer Card */
+    .drain-visual-card {
+      background: linear-gradient(165deg, var(--navy-deep), var(--dark-slate));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-light);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: 0 16px 36px -12px rgba(19, 32, 53, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      text-align: left;
+    }
+
+    .drain-visual-card:hover {
+      border-color: var(--lavender);
+      box-shadow: 0 16px 36px -12px rgba(158, 140, 239, 0.2);
+    }
+
+    .drain-header {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .drain-stat-badge {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: rgba(229, 87, 103, 0.12);
+      border: 1px solid rgba(229, 87, 103, 0.25);
+      color: #ff6b7a;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .drain-stat-badge span {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .drain-bar-item {
+      margin-bottom: 16px;
+    }
+
+    .drain-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-dim-light);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .drain-bar-outer {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .drain-bar-inner {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b7a, #ffa4ac);
+      border-radius: 4px;
+    }
+
+    .drain-bar-inner.item-1 { width: 85%; }
+    .drain-bar-inner.item-2 { width: 70%; }
+    .drain-bar-inner.item-3 { width: 60%; }
+
+    .dividend-banner {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .dividend-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(158, 140, 239, 0.15);
+      border: 1px solid rgba(158, 140, 239, 0.3);
+      color: var(--lavender);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .dividend-text {
+      font-size: 0.85rem;
+      color: var(--text-dim-light);
+      line-height: 1.4;
+      text-align: left;
+    }
+    
+    .dividend-text strong {
+      color: #FFFFFF;
+    }
+
     @media (max-width: 768px) {
       .dual-grid {
         grid-template-columns: 1fr;
@@ -210,12 +322,12 @@
           <div class="lbl">Fewer WhatsApp Queries</div>
         </div>
         <div class="clinic-stat-card">
-          <div class="num">94%</div>
-          <div class="lbl">Medication Adherence</div>
+          <div class="num">40%</div>
+          <div class="lbl">Less Patient Dropout</div>
         </div>
         <div class="clinic-stat-card">
-          <div class="num">48h</div>
-          <div class="lbl">To Deploy (EMR-Friendly)</div>
+          <div class="num">94%</div>
+          <div class="lbl">Medication Adherence</div>
         </div>
       </div>
     </div>
@@ -227,19 +339,58 @@
       <div class="grid-2" style="align-items: center;">
         <div>
           <span class="eyebrow">Operational Pressure</span>
-          <h2>Why Clinics Need Ovify</h2>
-          <p class="feature-desc" style="margin-top: 16px;">Clinics today face overwhelming operational pressure. Nurses are constantly tied up answering repetitive patient queries on platforms like WhatsApp, leading to staff burnout and patient anxiety. Crucially, when instructions are misunderstood, the risk of critical medication errors increases.</p>
-          <p class="feature-desc"><b>The Ovify Solution:</b> Ovify is designed to stabilize the patient's emotional journey while significantly reducing the administrative and emotional burdens on your clinic staff.</p>
+          <h2>Stabilize Clinic Workflow</h2>
+          <p class="feature-desc" style="margin-top: 16px; font-size: 1.05rem; line-height: 1.6; color: var(--text-dark);">
+            Repetitive patient queries overwhelm nursing teams, driving staff burnout, patient anxiety, and medication error rates.
+          </p>
+          <p class="feature-desc" style="color: var(--lavender-deep); font-weight: 600; margin-top: 12px;">
+            The Ovify Solution: Automate patient triage and communication to stabilize cycles and restore clinic capacity.
+          </p>
         </div>
-        <div class="card dark">
-          <h3>The Nurse Time Drain</h3>
-          <p style="margin-bottom: 14px; color: var(--text-dim-light);">Nurses spend up to <b>15+ hours a week</b> managing non-clinical communication:</p>
-          <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-            <li style="margin: 8px 0; display: flex; gap: 8px;"><span style="color: var(--error);">✕</span> WhatsApp follow-ups for missed doses</li>
-            <li style="margin: 8px 0; display: flex; gap: 8px;"><span style="color: var(--error);">✕</span> Answering repetitive mixing questions</li>
-            <li style="margin: 8px 0; display: flex; gap: 8px;"><span style="color: var(--error);">✕</span> Calling panicked patients during wait windows</li>
-          </ul>
-          <p style="margin-top: 18px; color: var(--success); font-weight: 600;">Ovify automates these steps, allowing nurses to practice at the top of their license.</p>
+        <div class="drain-visual-card">
+          <div class="drain-header">
+            <h3 style="margin: 0; font-size: 1.25rem;">The Nurse Time Drain</h3>
+            <div class="drain-stat-badge">
+              <span>15+</span> Hours Lost Per Nurse / Week
+            </div>
+          </div>
+          
+          <div class="drain-bar-item">
+            <div class="drain-bar-label">
+              <span>WhatsApp Missed Dose Chasing</span>
+              <span style="font-weight: 700; color: #ff6b7a;">High Effort</span>
+            </div>
+            <div class="drain-bar-outer">
+              <div class="drain-bar-inner item-1"></div>
+            </div>
+          </div>
+
+          <div class="drain-bar-item">
+            <div class="drain-bar-label">
+              <span>Answering Redundant Medication Mixing Qs</span>
+              <span style="font-weight: 700; color: #ffa4ac;">Moderate Effort</span>
+            </div>
+            <div class="drain-bar-outer">
+              <div class="drain-bar-inner item-2"></div>
+            </div>
+          </div>
+
+          <div class="drain-bar-item">
+            <div class="drain-bar-label">
+              <span>Panicked Wait-Window Calls</span>
+              <span style="font-weight: 700; color: #ffa4ac;">Constant Overhead</span>
+            </div>
+            <div class="drain-bar-outer">
+              <div class="drain-bar-inner item-3"></div>
+            </div>
+          </div>
+
+          <div class="dividend-banner">
+            <div class="dividend-icon">✓</div>
+            <div class="dividend-text">
+              <strong>The Automation Dividend:</strong> Ovify handles these steps automatically, letting nurses practice at the top of their license.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -320,6 +471,7 @@
         </div>
       </div>
     </div>
+  </section>
 
   <!-- ===== DUAL BURDEN SECTION ===== -->
   <section class="alt" style="border-top: 1px solid var(--line-dark);">
