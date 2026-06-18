@@ -570,10 +570,12 @@ footer .brand span {
 
 .why-card.challenge-card .why-stat-number {
   color: var(--error);
+  text-shadow: 0 0 20px rgba(229, 87, 103, 0.2);
 }
 
 .why-card.solution-card .why-stat-number {
   color: var(--lavender-deep);
+  text-shadow: 0 0 20px rgba(158, 140, 239, 0.25);
 }
 
 .why-stat-label {
@@ -625,6 +627,227 @@ footer .brand span {
   background-repeat: no-repeat;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+/* ==========================================
+   Modern Visual Design Upgrades & Glassmorphism
+   ========================================== */
+
+:root {
+  --glow-lavender: 0 0 30px rgba(158, 140, 239, 0.45);
+  --glow-navy: 0 0 30px rgba(19, 35, 60, 0.25);
+  --glow-blush: 0 0 30px rgba(255, 168, 168, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-bg-dark: rgba(9, 18, 32, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-border-dark: rgba(255, 255, 255, 0.09);
+  --gold: #FFBD2E;
+  --gold-deep: #D48E00;
+}
+
+/* Base modifications */
+section.alt {
+  background: radial-gradient(60% 60% at 50% 50%, rgba(158, 140, 239, 0.04) 0%, var(--navy-light) 100%);
+}
+
+/* Glassmorphic card adjustments */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 35px -10px rgba(19, 32, 53, 0.04);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--lavender);
+  box-shadow: 0 20px 45px -12px rgba(158, 140, 239, 0.15), var(--glow-lavender);
+}
+
+/* Button glow effects */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: all 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 150%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 35px -6px rgba(19, 35, 60, 0.5);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 35px -6px rgba(158, 140, 239, 0.5);
+}
+
+/* Why Exists Cards design update */
+.why-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 36px -12px rgba(19, 32, 53, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why-card.challenge-card {
+  border-top: 5px solid var(--blush-deep);
+  background: linear-gradient(180deg, var(--white) 0%, rgba(255, 168, 168, 0.06) 100%);
+}
+
+.why-card.challenge-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--blush-deep);
+  box-shadow: 0 24px 50px -15px rgba(229, 87, 103, 0.12), var(--glow-blush);
+}
+
+.why-card.solution-card {
+  border-top: 5px solid var(--lavender);
+  background: linear-gradient(180deg, var(--white) 0%, rgba(158, 140, 239, 0.06) 100%);
+}
+
+.why-card.solution-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lavender);
+  box-shadow: 0 24px 50px -15px rgba(158, 140, 239, 0.16), var(--glow-lavender);
+}
+
+/* Stakeholder Cards styling update */
+.stakeholder-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(19, 32, 53, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stakeholder-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--lavender);
+  box-shadow: 0 20px 45px -12px rgba(158, 140, 239, 0.12), var(--glow-lavender);
+}
+
+.stakeholder-card .tag {
+  background: linear-gradient(135deg, rgba(158, 140, 239, 0.12), rgba(19, 35, 60, 0.06));
+  border: 1px solid rgba(158, 140, 239, 0.15);
+  box-shadow: 0 4px 12px rgba(19, 35, 60, 0.03);
+  padding: 6px 14px;
+}
+
+/* Floating Spotlight dark card for Final CTA */
+.cta-dark-card {
+  background: radial-gradient(circle at 50% 50%, rgba(158, 140, 239, 0.16) 0%, transparent 65%), linear-gradient(135deg, var(--navy-deep), var(--dark-slate));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  padding: 60px 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.cta-dark-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(158, 140, 239, 0.3), transparent);
+}
+
+/* Glow Blobs container for backgrounds */
+.hero-glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+  animation: pulseGlow 12s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--navy);
+  top: -12%;
+  right: -8%;
+}
+
+.blob-2 {
+  width: 450px;
+  height: 450px;
+  background: var(--lavender);
+  bottom: -15%;
+  left: -10%;
+  animation-delay: -3s;
+}
+
+.blob-3 {
+  width: 320px;
+  height: 320px;
+  background: var(--blush);
+  top: 35%;
+  left: 45%;
+  animation-delay: -6s;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -25px) scale(1.12); }
+}
+
+/* Upgrades to Device mockups & previews inside HTML */
+.phone-mockup {
+  position: relative;
+}
+
+.phone-mockup::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.01) 50.1%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 8;
+}
+
+/* Double-ring breathing assist */
+.breathing-circle-wrap::before {
+  content: '';
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 1px dashed rgba(158, 140, 239, 0.4);
+  border-radius: 50%;
+  animation: breatheOuter 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes breatheOuter {
+  0%, 100% { transform: scale(1.25); opacity: 0.8; }
+  50% { transform: scale(2.2); opacity: 0.05; }
 }
 
 /* ==========================================
