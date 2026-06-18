@@ -15,8 +15,10 @@
   <style>
     /* How It Works specific styles */
     .how-hero {
-      padding: 60px 0;
-      background: radial-gradient(800px 500px at 80% 50%, rgba(158, 140, 239, 0.08), transparent 70%);
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 70px;
+      background: radial-gradient(800px 500px at 80% 50%, rgba(158, 140, 239, 0.06), transparent 75%);
     }
 
     .how-hero h1 {
@@ -40,17 +42,43 @@
     .comp-box {
       padding: 40px;
       border-radius: var(--radius);
-      border: 1px solid var(--line-dark);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
 
     .comp-box.problem {
-      background: var(--white);
+      background: linear-gradient(180deg, var(--white) 0%, rgba(255, 168, 168, 0.04) 100%);
+    }
+
+    .comp-box.problem:hover {
+      border-color: var(--blush-deep);
+      box-shadow: 0 24px 50px -15px rgba(229, 87, 103, 0.12), 0 0 25px rgba(255, 168, 168, 0.35);
     }
 
     .comp-box.solution {
-      background: var(--navy-deep);
+      background: radial-gradient(circle at 80% 20%, rgba(158, 140, 239, 0.15) 0%, transparent 60%), linear-gradient(135deg, var(--navy-deep), var(--dark-slate));
       color: var(--text-light);
-      border-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .comp-box.solution::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(158, 140, 239, 0.3), transparent);
+    }
+
+    .comp-box.solution:hover {
+      border-color: var(--lavender);
+      box-shadow: 0 24px 50px -15px rgba(158, 140, 239, 0.2), 0 0 25px rgba(158, 140, 239, 0.45);
     }
 
     .comp-box.solution h3 {
@@ -107,17 +135,20 @@
     }
 
     .app-card {
-      background: var(--white);
-      border: 1px solid var(--line-dark);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       padding: 32px;
-      transition: all 0.25s ease;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 35px -10px rgba(19, 32, 53, 0.04);
     }
 
     .app-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--navy);
-      box-shadow: 0 16px 36px -12px rgba(19, 35, 60, 0.12);
+      transform: translateY(-6px);
+      border-color: var(--lavender);
+      box-shadow: 0 20px 45px -12px rgba(158, 140, 239, 0.15), var(--glow-lavender);
     }
 
     .app-card h3 {
@@ -173,7 +204,8 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--line-dark);
+      background: linear-gradient(180deg, var(--navy) 0%, var(--lavender) 60%, var(--blush) 100%);
+      box-shadow: 0 0 8px rgba(158, 140, 239, 0.25);
     }
 
     .timeline-item {
@@ -187,26 +219,39 @@
 
     .timeline-dot {
       position: absolute;
-      left: -32px;
+      left: -35px;
       top: 4px;
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: var(--navy);
+      background: var(--lavender);
       border: 4px solid var(--ivory);
       z-index: 2;
+      box-shadow: 0 0 12px rgba(158, 140, 239, 0.7);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--navy);
+      box-shadow: 0 0 16px rgba(19, 35, 60, 0.6);
+      transform: scale(1.15);
     }
 
     .timeline-content {
-      background: var(--white);
-      border: 1px solid var(--line-dark);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.2s ease;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px) saturate(110%);
+      -webkit-backdrop-filter: blur(14px) saturate(110%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 30px rgba(19, 32, 53, 0.03);
     }
 
     .timeline-content:hover {
+      transform: translateY(-3px);
       border-color: var(--lavender);
+      box-shadow: 0 18px 40px -10px rgba(158, 140, 239, 0.12), var(--glow-lavender);
     }
 
     .timeline-phase {
@@ -215,7 +260,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--navy);
+      color: var(--lavender-deep);
       margin-bottom: 6px;
       display: block;
     }
@@ -232,7 +277,7 @@
       gap: 16px;
       margin-top: 20px;
       padding-top: 18px;
-      border-top: 1px solid var(--line-dark);
+      border-top: 1px solid rgba(158, 140, 239, 0.2);
     }
 
     .flow-role h5 {
@@ -295,14 +340,18 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section class="how-hero">
-    <div class="wrap grid-2" style="align-items: center; gap: 40px;">
+    <!-- Glowing background mesh blobs -->
+    <div class="hero-glow-blob blob-1"></div>
+    <div class="hero-glow-blob blob-2"></div>
+    <div class="hero-glow-blob blob-3"></div>
+    <div class="wrap grid-2" style="align-items: center; gap: 40px; position: relative; z-index: 1;">
       <div class="reveal">
         <span class="eyebrow">Connected IVF Ecosystem</span>
         <h1>How Ovify Works</h1>
         <p class="sub">Ovify integrates patient care coordination by connecting patients, support networks, and clinics in a single ecosystem, reducing compliance errors and nurse workload.</p>
       </div>
       <div class="reveal" style="text-align: center;">
-        <img src="assets/ecosystem_essence.png" alt="Ovify Connected Ecosystem Diagram" style="max-width: 440px; width: 100%; border-radius: var(--radius); border: 1px solid var(--line-dark); box-shadow: 0 16px 36px -12px rgba(19, 32, 53, 0.08); background: var(--white); padding: 8px;" />
+        <img src="assets/ecosystem-diagram.svg" alt="Ovify Connected Ecosystem Diagram" style="max-width: 440px; width: 100%; border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.65); box-shadow: 0 24px 50px -15px rgba(19, 32, 53, 0.18); background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px;" />
       </div>
     </div>
   </section>
